@@ -10,13 +10,13 @@ const userReducer = createSlice({
   name: 'userReducer',
   initialState,
   reducers: {
-    getProfileAction:(state,action)=>{
+    getUserAction:(state,action)=>{
       state.user = action.payload
     }
   }
 });
 
-export const {getProfileAction} = userReducer.actions
+export const {getUserAction} = userReducer.actions
 
 export default userReducer.reducer
 
@@ -25,7 +25,7 @@ export const getUser = ()=>{
     try {
       const res = await http.get('/Users/getProfile')
 
-      const action = getProfileAction(res)
+      const action = getUserAction(res)
       dispatch(action)
       setStoreJson(USER_LOGIN,res.data.content)
     } catch (error) {
@@ -40,6 +40,16 @@ export const loginApi = (user) =>{
 
       const action = getUser()
       dispatch(action)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+export const registerApi = (user)=>{
+  return async(dispatch)=>{
+    try {
+      const res = await http.post('/Users/signup',user)
+      alert(res.data.message)
     } catch (error) {
       console.log(error);
     }
