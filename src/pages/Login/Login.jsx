@@ -15,7 +15,16 @@ export default function Login() {
                   <p className="mt-3">Password</p>
                   <input type="password" id="password" placeholder="enter password" className="form-control"/>
                 </div>
-                <button className="mt-3 btn btn-danger">Login</button>
+                <div className="btn-area">
+                  <div className="row">
+                    <div className="col-6 text-end">
+                      <button className="mt-3 btn btn-danger">Login</button>
+                    </div>
+                    <div className="col-6 text-start">
+                      <button className="mt-3 btn btn-danger">Register</button>
+                    </div>
+                  </div>
+                </div>
               </form>
             </div>
           </div>

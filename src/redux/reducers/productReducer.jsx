@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import http from '../../utils/setting'
+import {http} from '../../utils/setting'
 
 const initialState = {
   arrProd:[],
