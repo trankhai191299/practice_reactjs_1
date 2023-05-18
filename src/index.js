@@ -10,6 +10,7 @@ import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
+import Detail from './pages/Detail/Detail'
 export const history = createBrowserHistory({window})
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,6 +20,9 @@ root.render(
       <Route path='' element={<App/>}>
         <Route index element={<Home/>}></Route>
         <Route path='login' element={<Login/>}></Route>
+        <Route path='detail'>
+          <Route path=':id' element={<Detail/>}></Route>
+        </Route>
       </Route>
     </Routes>
   </BrowserRouter>

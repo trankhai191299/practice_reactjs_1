@@ -45,13 +45,13 @@ export const loginApi = (user) =>{
     }
   }
 }
-export const registerApi = (user)=>{
-  return async(dispatch)=>{
-    try {
-      const res = await http.post('/Users/signup',user)
-      alert(res.data.message)
-    } catch (error) {
-      console.log(error);
-    }
-  }
-}
+// export const registerApi = (user)=>{
+//   return async(dispatch)=>{
+//     try {
+//       const res = await http.post('/Users/signup',user)
+//       alert(res.data.message)
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
+// }

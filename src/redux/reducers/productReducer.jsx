@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 import {http} from '../../utils/setting'
+import axios from 'axios';
 
 const initialState = {
   arrProd:[],
   prodDetail:[],
-  prodName:[]
 }
 
 const productReducer = createSlice({
@@ -19,10 +19,6 @@ const productReducer = createSlice({
       const prodDetail = action.payload
       state.prodDetail = prodDetail
     },
-    getProdNameAction : (state,action)=>{
-      const prodName = action.payload
-      state.prodName = prodName
-    }
   }
 });
 
@@ -33,35 +29,22 @@ export default productReducer.reducer
 export const getAllProdApi = ()=>{
   return async(dispatch)=>{
     try {
-      const res = await http.get('/Product')
-      dispatch(getAllProdAction(res))
+      const res = await http.get('Product')
+      // const res = await axios.get("https://shop.cyberlearn.vn/api/Product")
+      // console.log(res)
+      dispatch(getAllProdAction(res.data.content))
     } catch (error) {
       console.log(error);
     }
   }
 }
 
-export const getProdByName = (name)=>{
-  return async(dispatch)=>{
-    try {
-      if(name.trim()!==null && name.trim()!==''){
-        const res = await http.get(`/Product?keyword=${name}`)
-        dispatch(getProdNameAction(res))
-      }else{
-        dispatch(getProdNameAction(''))
-      }
 
-    } catch (error) {
-      console.log(error);
-    }
-  }
-}
-
-export const getProdDetail = (id) =>{
+export const getProdDetailApi = (id) =>{
   return async(dispatch)=>{
     try {
       const res = await http.get(`/product/getbyid?id=${id}`)
-      dispatch(getProdDetailAction(res))
+      dispatch(getProdDetailAction(res.data.content))
     } catch (error) {
       console.log(error);
     }
